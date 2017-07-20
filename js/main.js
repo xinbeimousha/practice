@@ -1,8 +1,37 @@
 class Slide{
 	//基本属性
-	constructor(id){
+	constructor(id,cycle=3000){
 		this.container = document.getElementById(id);
 		this.items = this.container.querySelectorAll('.slide-list__item,.slide-list__item--selected');
+		this.cycle = cycle;
+		this.slideHandles = [];
+
+		let controller = this.container.querySelector('.slide-list__control');
+
+		if(controller){
+			let buttons = document.querySelectorAll('.slide-list__control-button,.slide-list__control-button--selected');
+				controller.addEventListener('mouseover',evt=>{
+					//获取当前下标
+					var idx = Array.from(buttons).indexOf(evt.target);
+					if(idx>=0){
+						this.slideTo(idx);
+						this.stop();
+					}
+				})
+
+				controller.addEventListener('mouseout',evt=>{
+					this.start();
+				})
+				//改变按钮zhuangt
+		this.addSlideListener(function(idx){
+			let selected = document.querySelector('.slide-list__control-button--selected');
+			if(selected){
+				selected.className = 'slide-list__control-button';
+				buttons[idx].className = 'slide-list__control-button--selected'; 
+			}
+		})
+		}
+		
 	}
 	//获取当前显示的图片
 	getSelectedItem(){
@@ -24,6 +53,10 @@ class Slide{
 		if(item){
 			this.items[idx].className = 'slide-list__item--selected';
 		}
+
+		this.slideHandles.forEach(handle=>{
+			handle(idx);
+		})
 	}
 	//下一页
 	slideNext(){
@@ -38,8 +71,24 @@ class Slide{
 		let preIdx = (this.items.length + currentIdx - 1)%this.items.length;
 		this.slideTo(preIdx);
 	}
+	//添加slide监听事件
+	addSlideListener(handle){
+		this.slideHandles.push(handle)
+	}
+	//启动轮播事件
+	start(){
+		//先清空setInterval
+		this.stop();
+		this.slideTimer = setInterval(()=>{
+			this.slideNext();
+		},this.cycle);
+	}
+	//暂停轮播事件
+	stop(){
+		clearInterval(this.slideTimer);
+	}
 }
 
 let slide = new Slide('my-slider');
-
-setInterval(slide.slideNext.bind(slide),3000);
+slide.start();
+//setInterval(slide.slideNext.bind(slide),3000);
