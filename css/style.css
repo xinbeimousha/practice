@@ -1,0 +1,25 @@
+body{
+	margin:0;
+}
+#my-slider{
+	position: relative;
+	height:340px;
+}
+ul{
+	width: 100%;
+	height:100%;
+	list-style: none;
+	padding:0;
+	margin:0;
+	position: relative;
+}
+.slide-list__item,
+.slide-list__item--selected{
+	position: absolute;
+	transition: opacity 1s;
+	opacity: 0;
+}
+.slide-list__item--selected{
+	transition: opacity 1s;
+	opacity: 1;
+}
