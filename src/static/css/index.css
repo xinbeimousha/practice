@@ -2,7 +2,7 @@
 html{
 	font-size: 62.5%;
 }
-.banner img{
+img{
 	display: block;
 	width: 100%;
 }
@@ -20,6 +20,7 @@ header img{
 	width: 1.0rem;
     margin: 0 0.5rem 0 1.2rem;
     vertical-align: sub;
+    display: inline-block;
 }
 header a{
 	display: inline-block;
@@ -57,16 +58,114 @@ li.active{
 	border-bottom: 2px solid #93d4d9;
 }
 
+.tag{
+	padding:0 1rem;
+	background-color: white;
+	padding-top: 2rem;
+	
+}
+.tag-content{
+	border-bottom: 0.2rem solid #e5e5e5;
+}
 .tag ul{
 	-webkit-display:flex;
 	display: flex;
-	background-color: white;
+	
 }
 .tag ul li{
 	flex:1;
 	text-align: center;
 }
-.tag ul li img{
-	width:4.5rem;
+.tag ul li p{
+	font-weight: bold;
+	font-size:1.6rem;
+	margin:2rem 0;
 }
+.tag ul li div{
+	width:4rem;
+	display: inline-block;
+}
+.column{
+	background-color: white;
+	padding:2rem 0;
+}
+.column .column-content ul{
+	display: flex;
+}
+.column .column-content ul li{
+	flex:1;
+}
+.column .column-content ul li div{
+	text-align: center;
+	display:inline-block; 
+	width:100%;
+}
+.column .column-content ul li:not(:first-child){
+	border-left: 0.2rem solid #e5e5e5; 
+}
+.module{
+	padding:0 1rem;
+	background-color: white;
+	margin-top:1rem;
+}
+.module h2{
+	line-height: 3;
+	border-bottom: 0.2rem solid #e5e5e5; 
+}
+.module h1{
+	padding:1.1rem 0;
+	text-align: center;
+	background-color: #e5e5e5;
+}
+.module .module-1{
+	padding:1rem 0;
+}
+.module .module-1 ul{
+	display: flex;
+}
+.module .module-1 ul li{
+	flex:1;
+}
+.module .module-1 ul li div{
+	margin-left: 1rem;
+	position: relative;
+	height: 100%;
+}
+.end{
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+.article-1{
+
+	padding:1rem;
+	border-bottom: 0.2rem solid #e5e5e5;
+	background-color: white;
+}
+.article-1 ul{
+	display: flex;
+}
+.article-1 ul .imgs{
+	flex:1;
+}
+.article-1 ul .title{
+	flex:2;
+}
+.article-2{
+	padding:1rem .8rem;
+	background-color:white;
+}
+.article-2 h1{
+	margin-bottom: 1rem;
+}
+.article-2 h2{
+	margin-top:1rem;
+	color:#bcbcbc;
+}
+.article-2 ul{
+	display: flex;
+}
+.article-2 ul li{
+	flex:1;
+	margin:0 .2rem;
 }
